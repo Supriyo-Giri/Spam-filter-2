@@ -135,7 +135,130 @@ def predict_email(subject, datetime_str, category, first_time):
 # -------------------------------
 print("🧪 Running example predictions...\n")
 
+# examples = [
+#     {
+#         "subject": "Claim your free prize",
+#         "datetime_str": "2025-08-25 02:30:00",
+#         "category": "promotion",
+#         "first_time": 1
+#     },
+#     {
+#         "subject": "Weekly report due",
+#         "datetime_str": "2025-08-15 10:00:00",
+#         "category": "work",
+#         "first_time": 0
+#     },
+#     {
+#         "subject": "Your account is locked",
+#         "datetime_str": "2025-08-17 09:00:00",
+#         "category": "security",
+#         "first_time": 1
+#     }
+# ]
+
+# List of test examples
 examples = [
+    # -----------------------------
+    # 🟢 NORMAL (Genuine) Emails
+    # -----------------------------
+    {
+        "subject": "Weekly report due",
+        "datetime_str": "2025-08-15 09:00:00",
+        "category": "work",
+        "first_time": 0
+    },
+    {
+        "subject": "Team lunch tomorrow",
+        "datetime_str": "2025-08-16 12:30:00",
+        "category": "work",
+        "first_time": 1
+    },
+    {
+        "subject": "Meeting at 3 PM",
+        "datetime_str": "2025-08-20 08:45:00",
+        "category": "work",
+        "first_time": 0
+    },
+    {
+        "subject": "Project submission reminder",
+        "datetime_str": "2025-08-17 10:20:00",
+        "category": "work",
+        "first_time": 1
+    },
+    {
+        "subject": "Happy birthday",
+        "datetime_str": "2025-08-05 14:00:00",
+        "category": "work",
+        "first_time": 1
+    },
+    {
+        "subject": "Feedback on Q2 goals",
+        "datetime_str": "2025-08-10 11:15:00",
+        "category": "work",
+        "first_time": 0
+    },
+    {
+        "subject": "Updated team calendar",
+        "datetime_str": "2025-08-18 09:30:00",
+        "category": "work",
+        "first_time": 0
+    },
+
+    # -----------------------------
+    # 🔴 FRAUD (Phishing/Scams)
+    # -----------------------------
+    {
+        "subject": "Your account is locked",
+        "datetime_str": "2025-08-17 01:43:00",
+        "category": "security",
+        "first_time": 1
+    },
+    {
+        "subject": "Password reset required",
+        "datetime_str": "2025-08-09 13:25:00",
+        "category": "security",
+        "first_time": 0
+    },
+    {
+        "subject": "Suspicious login detected",
+        "datetime_str": "2025-08-14 02:32:00",
+        "category": "security",
+        "first_time": 1
+    },
+    {
+        "subject": "Urgent bank verification",
+        "datetime_str": "2025-08-16 08:26:00",
+        "category": "security",
+        "first_time": 0
+    },
+    {
+        "subject": "Payment not received",
+        "datetime_str": "2025-08-15 18:22:00",
+        "category": "security",
+        "first_time": 1
+    },
+    {
+        "subject": "Verify your identity now",
+        "datetime_str": "2025-08-19 03:10:00",
+        "category": "security",
+        "first_time": 1
+    },
+    {
+        "subject": "Unusual activity on your card",
+        "datetime_str": "2025-08-12 00:54:00",
+        "category": "security",
+        "first_time": 0
+    },
+    {
+        "subject": "Immediate action required",
+        "datetime_str": "2025-08-11 06:15:00",
+        "category": "security",
+        "first_time": 1
+    },
+
+    # -----------------------------
+    # 🟡 SPAM (Promotional Scams)
+    # -----------------------------
     {
         "subject": "Claim your free prize",
         "datetime_str": "2025-08-25 02:30:00",
@@ -143,15 +266,45 @@ examples = [
         "first_time": 1
     },
     {
-        "subject": "Weekly report due",
-        "datetime_str": "2025-08-15 10:00:00",
-        "category": "work",
+        "subject": "Win a lottery now",
+        "datetime_str": "2025-08-19 16:46:00",
+        "category": "promotion",
         "first_time": 0
     },
     {
-        "subject": "Your account is locked",
-        "datetime_str": "2025-08-17 09:00:00",
-        "category": "security",
+        "subject": "Exclusive deal for you",
+        "datetime_str": "2025-08-21 15:06:00",
+        "category": "promotion",
+        "first_time": 0
+    },
+    {
+        "subject": "Limited time offer",
+        "datetime_str": "2025-08-15 22:55:00",
+        "category": "promotion",
+        "first_time": 1
+    },
+    {
+        "subject": "Get rich quick",
+        "datetime_str": "2025-08-06 19:35:00",
+        "category": "promotion",
+        "first_time": 1
+    },
+    {
+        "subject": "Huge discount inside",
+        "datetime_str": "2025-08-18 21:37:00",
+        "category": "promotion",
+        "first_time": 1
+    },
+    {
+        "subject": "You've won $1,000,000",
+        "datetime_str": "2025-08-10 04:20:00",
+        "category": "promotion",
+        "first_time": 1
+    },
+    {
+        "subject": "Last chance to join",
+        "datetime_str": "2025-08-03 21:41:00",
+        "category": "promotion",
         "first_time": 1
     }
 ]
